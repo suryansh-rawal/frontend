@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
+  Animated,
   FlatList,
   KeyboardAvoidingView,
   Platform,
@@ -10,6 +11,46 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
+function TypingIndicator() {
+  const dots = useRef([new Animated.Value(0), new Animated.Value(0), new Animated.Value(0)]).current;
+
+  useEffect(() => {
+    const animations = dots.map((dot, i) =>
+      Animated.loop(
+        Animated.sequence([
+          Animated.delay(i * 150),
+          Animated.timing(dot, { toValue: 1, duration: 300, useNativeDriver: true }),
+          Animated.timing(dot, { toValue: 0, duration: 300, useNativeDriver: true }),
+          Animated.delay((2 - i) * 150),
+        ])
+      )
+    );
+    animations.forEach((anim) => anim.start());
+    return () => animations.forEach((anim) => anim.stop());
+  }, [dots]);
+
+  return (
+    <View style={[styles.bubble, styles.assistantBubble, styles.typingBubble]}>
+      {dots.map((dot, i) => (
+        <Animated.View
+          key={i}
+          style={[
+            styles.typingDot,
+            {
+              opacity: dot.interpolate({ inputRange: [0, 1], outputRange: [0.3, 1] }),
+              transform: [
+                {
+                  translateY: dot.interpolate({ inputRange: [0, 1], outputRange: [0, -4] }),
+                },
+              ],
+            },
+          ]}
+        />
+      ))}
+    </View>
+  );
+}
 
 type Message = {
   id: string;
@@ -77,6 +118,7 @@ export default function Chat() {
           data={messages}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
+          ListFooterComponent={sending ? <TypingIndicator /> : null}
           renderItem={({ item }) => (
             <View
               style={[
@@ -153,6 +195,18 @@ const styles = StyleSheet.create({
   },
   assistantBubbleText: {
     color: '#f5f5f5',
+  },
+  typingBubble: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingVertical: 14,
+  },
+  typingDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
+    backgroundColor: '#8ab4f8',
   },
   inputRow: {
     flexDirection: 'row',
