@@ -9,21 +9,27 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.safeArea} edges={['bottom']}>
       <ScrollView contentContainerStyle={styles.content}>
-        <Section title="">
-          <Text style={styles.name}>{profile.name}</Text>
+        <View style={styles.hero}>
+          <View style={styles.heroTopline}>
+            <Text style={styles.mark}>SR / 01</Text>
+            <Text style={styles.availability}>OPEN TO BIG IDEAS</Text>
+          </View>
+
+          <Text style={styles.eyebrow}>ENGINEERING / AI / CURIOSITY</Text>
+          <Text style={styles.name}>Suryansh{`\n`}Rawal.</Text>
           <Text style={styles.role}>{profile.title}</Text>
           <Text style={styles.tagline}>{profile.tagline}</Text>
 
           <Link href="/chat" style={styles.chatButton}>
-            <Text style={styles.chatButtonText}>Chat with my AI avatar →</Text>
+            <Text style={styles.chatButtonText}>Meet my AI avatar <Text style={styles.arrow}>↗</Text></Text>
           </Link>
-        </Section>
+        </View>
 
-        <Section title="About">
+        <Section label="01 / PROFILE" title="Building a useful future.">
           <Text style={styles.body}>{profile.about}</Text>
         </Section>
 
-        <Section title="Skills">
+        <Section label="02 / TOOLKIT" title="The tools I reach for.">
           <View style={styles.skillsRow}>
             {profile.skills.map((skill) => (
               <View key={skill} style={styles.skillPill}>
@@ -33,17 +39,28 @@ export default function Home() {
           </View>
         </Section>
 
-        <Section title="Projects">
+        <Section label="03 / SELECTED WORK" title="Things I have made.">
           {profile.projects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </Section>
 
-        <Section title="Contact">
-          <Text style={styles.body}>{profile.links.email}</Text>
-          <Text style={styles.body}>{profile.links.github}</Text>
-          <Text style={styles.body}>{profile.links.linkedin}</Text>
+        <Section label="04 / CONTACT" title="Let’s make something matter.">
+          <View style={styles.contactRow}>
+            <Text style={styles.contactLabel}>EMAIL</Text>
+            <Text style={styles.contactValue}>{profile.links.email}</Text>
+          </View>
+          <View style={styles.contactRow}>
+            <Text style={styles.contactLabel}>GITHUB</Text>
+            <Text style={styles.contactValue}>{profile.links.github}</Text>
+          </View>
+          <View style={styles.contactRow}>
+            <Text style={styles.contactLabel}>LINKEDIN</Text>
+            <Text style={styles.contactValue}>{profile.links.linkedin}</Text>
+          </View>
         </Section>
+
+        <Text style={styles.footer}>SURYANSH RAWAL / MADE WITH INTENT</Text>
       </ScrollView>
     </SafeAreaView>
   );
@@ -52,45 +69,88 @@ export default function Home() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#0f1115',
+    backgroundColor: '#f3f0e9',
   },
   content: {
     alignItems: 'center',
-    paddingVertical: 24,
+    paddingBottom: 42,
+  },
+  hero: {
+    width: '100%',
+    maxWidth: 860,
+    paddingHorizontal: 28,
+    paddingTop: 28,
+    paddingBottom: 86,
+  },
+  heroTopline: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBottom: 72,
+    borderBottomWidth: 1,
+    borderBottomColor: '#d5d0c6',
+  },
+  mark: {
+    color: '#171717',
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 1,
+  },
+  availability: {
+    color: '#e4573d',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1.2,
+  },
+  eyebrow: {
+    color: '#e4573d',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1.5,
+    marginTop: 58,
   },
   name: {
-    fontSize: 32,
+    fontSize: 68,
     fontWeight: '800',
-    color: '#f5f5f5',
+    color: '#171717',
+    letterSpacing: -2,
+    lineHeight: 68,
+    marginTop: 14,
   },
   role: {
-    fontSize: 16,
-    color: '#8ab4f8',
-    marginTop: 4,
+    fontSize: 18,
+    color: '#171717',
+    fontWeight: '700',
+    marginTop: 24,
   },
   tagline: {
-    fontSize: 15,
-    color: '#a8adb8',
-    marginTop: 12,
-    lineHeight: 22,
+    maxWidth: 420,
+    fontSize: 17,
+    color: '#68645d',
+    marginTop: 10,
+    lineHeight: 26,
   },
   chatButton: {
-    marginTop: 20,
+    marginTop: 34,
     alignSelf: 'flex-start',
-    backgroundColor: '#8ab4f8',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 8,
+    backgroundColor: '#171717',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
   },
   chatButtonText: {
-    color: '#0f1115',
+    color: '#f3f0e9',
     fontWeight: '700',
+    fontSize: 15,
+  },
+  arrow: {
+    color: '#e4573d',
+    fontSize: 19,
   },
   body: {
-    fontSize: 15,
-    color: '#c4c8d1',
-    lineHeight: 22,
-    marginBottom: 4,
+    maxWidth: 640,
+    fontSize: 18,
+    color: '#4f4b45',
+    lineHeight: 29,
   },
   skillsRow: {
     flexDirection: 'row',
@@ -98,15 +158,42 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   skillPill: {
-    backgroundColor: '#1a1d24',
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    backgroundColor: '#e8e3d9',
+    paddingHorizontal: 13,
+    paddingVertical: 9,
     borderWidth: 1,
-    borderColor: '#2a2e38',
+    borderColor: '#d5d0c6',
   },
   skillText: {
-    color: '#f5f5f5',
+    color: '#171717',
     fontSize: 13,
+    fontWeight: '700',
+  },
+  contactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#d5d0c6',
+    paddingVertical: 14,
+    gap: 24,
+  },
+  contactLabel: {
+    width: 72,
+    color: '#e4573d',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1,
+  },
+  contactValue: {
+    flex: 1,
+    color: '#171717',
+    fontSize: 14,
+  },
+  footer: {
+    color: '#9a958b',
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 1.2,
+    marginTop: 18,
   },
 });

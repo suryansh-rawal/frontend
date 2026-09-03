@@ -22,25 +22,26 @@ export function ProjectCard({ title, description, link }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#1a1d24',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#2a2e38',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingVertical: 18,
+    borderTopWidth: 1,
+    borderTopColor: '#d5d0c6',
   },
   cardPressed: {
     opacity: 0.7,
   },
   title: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#f5f5f5',
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#171717',
     marginBottom: 4,
   },
   description: {
+    maxWidth: 580,
     fontSize: 14,
-    color: '#a8adb8',
-    lineHeight: 20,
+    color: '#68645d',
+    lineHeight: 21,
   },
 });
