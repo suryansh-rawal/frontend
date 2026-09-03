@@ -1,19 +1,25 @@
 export const profile = {
-  name: 'Suryansh',
-  title: 'Software Engineer',
-  tagline: 'I build things and I taught an AI to talk about it.',
+  name: 'Suryansh Rawal',
+  title: 'AI/ML Learner and Developer',
+  tagline: 'Building strong foundations in AI/ML and DSA.',
   about:
-    'Replace this with a couple of sentences about yourself: background, what you work on, and what you care about.',
-  skills: ['TypeScript', 'React', 'Node.js', 'Python', 'AI/ML'],
+    'I am a second-year student at ABES Engineering College, currently learning AI/ML step by step while strengthening my Data Structures and Algorithms fundamentals. I have built games with JavaScript and want to create products that help billions of people.',
+  skills: ['Data Structures & Algorithms', 'JavaScript', 'AI/ML'],
   projects: [
     {
-      title: 'Project One',
-      description: 'Short description of what this project does and your role in it.',
+      title: 'Researcher AI Model',
+      description: 'An AI project focused on research and exploration.',
       link: 'https://example.com',
     },
     {
-      title: 'Project Two',
-      description: 'Short description of what this project does and your role in it.',
+      title: 'AI Portfolio',
+      description: 'A portfolio powered by an AI avatar that can talk about my background and work.',
+      link: 'https://example.com',
+    },
+    {
+      title: 'Hostel Dash',
+      description:
+        'A popular campus delivery service that brought food and other orders from the college gates to students\' rooms. It also taught me about data analysis, founder planning, and future strategy.',
       link: 'https://example.com',
     },
   ],
