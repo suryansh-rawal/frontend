@@ -4,7 +4,7 @@ export const profile = {
   tagline: 'Building strong foundations in AI/ML and DSA.',
   about:
     'I am a second-year student at ABES Engineering College, currently learning AI/ML step by step while strengthening my Data Structures and Algorithms fundamentals. I have built games with JavaScript and want to create products that help billions of people.',
-  skills: ['Data Structures & Algorithms', 'JavaScript', 'AI/ML'],
+  skills: ['Data Structures & Algorithms', 'JavaScript', 'Python', 'AI/ML'],
   projects: [
     {
       title: 'Researcher AI Model',
@@ -24,9 +24,9 @@ export const profile = {
     },
   ],
   links: {
-    github: 'https://github.com/your-username',
-    linkedin: 'https://linkedin.com/in/your-username',
-    email: 'you@example.com',
+    github: 'https://github.com/suryansh-rawal',
+    linkedin: 'https://www.linkedin.com/in/suryansh-rawal/',
+    email: 'suryanshrawal1@gmai.com',
   },
 };
 
