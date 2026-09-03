@@ -26,7 +26,7 @@ export const profile = {
   links: {
     github: 'https://github.com/suryansh-rawal',
     linkedin: 'https://www.linkedin.com/in/suryansh-rawal/',
-    email: 'suryanshrawal1@gmai.com',
+    email: 'suryanshrawal1@gmail.com',
   },
 };
 
